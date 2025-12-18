@@ -132,7 +132,7 @@ const Home: React.FC = () => {
 
                  <div className="pt-6">
                     <Link href="/team" className="inline-flex items-center text-cyan-700 font-bold hover:translate-x-1 transition-transform">
-                       查看醫師團隊資歷 <ArrowRight className="w-5 h-5 ml-2" />
+                       查看醫療團隊資歷 <ArrowRight className="w-5 h-5 ml-2" />
                     </Link>
                  </div>
               </div>
