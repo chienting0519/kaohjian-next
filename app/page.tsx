@@ -2,37 +2,26 @@
 
 import React, { useContext, useState } from 'react';
 import Link from 'next/link';
-import { ClipboardCheck, Stethoscope, ArrowRight, MapPin, Phone, Bell } from 'lucide-react';
+import Image from 'next/image';
+// ✅ 修正：把 Phone 和 ArrowRight 加回來
+import { ClipboardCheck, Stethoscope, ArrowRight, MapPin, Phone } from 'lucide-react';
 import { LayoutContext } from '@/components/ClientLayout';
-import { DoctorIcon } from '@/components/DoctorIcon';
 import { CLINIC_INFO } from '@/lib/constants';
-import HealthCheckModal from '@/components/HealthCheckModal'; // 引入剛剛做的視窗
 
 const Home: React.FC = () => {
   const { setIsChatOpen } = useContext(LayoutContext);
-  
-  // 控制彈出視窗的開關
-  const [isCheckupModalOpen, setIsCheckupModalOpen] = useState(false);
 
   return (
     <>
-      {/* 彈出視窗元件 (預設隱藏，isCheckupModalOpen 變成 true 才會顯示) */}
-      <HealthCheckModal 
-        isOpen={isCheckupModalOpen} 
-        onClose={() => setIsCheckupModalOpen(false)} 
-      />
-
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-cyan-900 via-cyan-800 to-blue-900 text-white min-h-[calc(100vh-144px)] flex flex-col items-center justify-center overflow-hidden py-12">
-        <div className="absolute inset-0 opacity-10 pattern-grid-lg"></div>
+        
+        {/* 裝飾性光暈 */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-lime-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2"></div>
         
         <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
           
-          {/* 🔥 跑馬燈按鈕 (放在標題上方) */}
-      
-
           <div className="max-w-5xl mx-auto text-center">
             
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-200 mb-6 tracking-wider animate-in fade-in slide-in-from-bottom-5 duration-700">
@@ -63,12 +52,10 @@ const Home: React.FC = () => {
 
             {/* 按鈕區塊 */}
             <div className="flex flex-col sm:flex-row gap-5 mb-12 items-center justify-center animate-in fade-in slide-in-from-bottom-12 duration-700 delay-500">
-<Link href="/checkup" className="w-full sm:w-auto bg-lime-500 hover:bg-lime-600 text-white px-8 py-4 rounded-full font-bold text-xl transition-all shadow-lg hover:shadow-lime-500/30 text-center transform hover:-translate-y-1 cursor-pointer flex items-center justify-center gap-4 ring-2 ring-white/20">
+              <Link href="/checkup" className="w-full sm:w-auto bg-lime-500 hover:bg-lime-600 text-white px-8 py-4 rounded-full font-bold text-xl transition-all shadow-lg hover:shadow-lime-500/30 text-center transform hover:-translate-y-1 cursor-pointer flex items-center justify-center gap-4 ring-2 ring-white/20">
                 <ClipboardCheck className="w-8 h-8 flex-shrink-0" />
                 <div className="flex flex-col items-start text-left">
-                  {/* 上面小字改為：線上篩檢 */}
                   <span className="leading-none mb-1 text-sm opacity-90">線上篩檢</span>
-                  {/* 下面大字改為：腎臟一分鐘自我檢測 */}
                   <span className="text-lg">腎臟一分鐘自我檢測</span>
                 </div>
               </Link>              
@@ -80,13 +67,16 @@ const Home: React.FC = () => {
                 </div>
               </Link>
               
-              <button onClick={() => setIsChatOpen(true)} className="w-full sm:w-auto bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 rounded-full font-bold text-xl transition-all shadow-lg shadow-cyan-900/50 text-center transform hover:-translate-y-1 cursor-pointer flex items-center justify-center gap-4 ring-2 ring-white/20">
-<div className="w-10 h-10 flex-shrink-0 bg-white rounded-full flex items-center justify-center shadow-sm overflow-hidden border-2 border-cyan-100">
-                    {/* 👇 改成讀取您的 Q 版 Logo */}
-                    <img 
+              <button 
+                onClick={() => setIsChatOpen(true)} 
+                className="w-full sm:w-auto bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 rounded-full font-bold text-xl transition-all shadow-lg shadow-cyan-900/50 text-center transform hover:-translate-y-1 cursor-pointer flex items-center justify-center gap-4 ring-2 ring-white/20"
+              >
+                <div className="w-10 h-10 flex-shrink-0 bg-white rounded-full flex items-center justify-center shadow-sm overflow-hidden border-2 border-cyan-100 relative">
+                    <Image 
                       src="/ai-logo.png" 
                       alt="AI Doctor"
-                      className="w-full h-full object-cover" 
+                      fill
+                      className="object-cover" 
                     />
                 </div>                
                 <div className="flex flex-col items-start text-left">
@@ -99,7 +89,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Content Section (下半部內容) */}
+      {/* Content Section */}
       <section className="py-16 bg-white relative">
         <div className="container mx-auto px-4 max-w-6xl">
            <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -124,7 +114,7 @@ const Home: React.FC = () => {
                        <MapPin className="w-5 h-5 text-cyan-600" />
                        高雄市小港區沿海一路88號
                     </div>
-                    <a href={`tel:${CLINIC_INFO.phone}`} className="flex items-center gap-2 text-slate-700 font-bold bg-slate-50 px-4 py-2 rounded-lg border border-slate-100 hover:bg-cyan-50 hover:text-cyan-700 transition-colors">
+                    <a href={`tel:${CLINIC_INFO.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 text-slate-700 font-bold bg-slate-50 px-4 py-2 rounded-lg border border-slate-100 hover:bg-cyan-50 hover:text-cyan-700 transition-colors">
                        <Phone className="w-5 h-5 text-cyan-600" />
                        {CLINIC_INFO.phone} (點擊撥打)
                     </a>

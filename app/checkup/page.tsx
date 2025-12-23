@@ -4,7 +4,7 @@ import KidneyCheck from '@/components/KidneyCheck';
 const Checkup: React.FC = () => {
   return (
     <>
-      <section className="py-12 bg-gradient-to-b from-cyan-900 to-cyan-800 text-white relative overflow-hidden min-h-[calc(100vh-144px)] flex items-center">
+      <section className="py-12 bg-gradient-to-b from-cyan-900 to-cyan-800 text-white relative overflow-hidden min-h-[85vh] flex items-center">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 pattern-dots"></div>
         <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-4">
