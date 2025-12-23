@@ -1,4 +1,4 @@
-"use client"; // 1. 加上這行通關密語
+"use client";
 
 import React from 'react';
 import Link from 'next/link';
@@ -42,11 +42,12 @@ const Services: React.FC = () => {
           
           <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4">
             <span className="text-cyan-600 font-bold tracking-wider uppercase text-sm mb-2 block">Our Medical Services</span>
-            <h1 className="text-3xl md:text-5xl font-bold text-slate-800 mb-4">高健診所 專業醫療項目</h1>
+            <h1 className="text-3xl md:text-5xl font-bold text-slate-800 mb-4">專業醫療項目</h1>
             <div className="w-24 h-1.5 bg-lime-500 mx-auto rounded-full"></div>
             <p className="mt-6 text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
-              我們引進與醫學中心同等級的透析設備，並結合社區診所的便利性。<br/>
-              從<span className="text-cyan-700 font-bold">血液透析</span>到<span className="text-cyan-700 font-bold">三高慢性病管理</span>，提供您最完整的腎臟照護。
+              高健診所引進與醫學中心同等級的透析設備，並結合社區診所的便利性。<br/>
+              {/* ✅ 修改：加入體重肥胖管理，並加上統一的樣式 */}
+              從<span className="text-cyan-700 font-bold">血液透析</span>、<span className="text-cyan-700 font-bold">三高慢性病</span>到<span className="text-cyan-700 font-bold">體重肥胖管理</span>，提供您最完整的腎臟健康照護。
             </p>
           </div>
 
@@ -59,7 +60,7 @@ const Services: React.FC = () => {
             ))}
           </div>
 
-          {/* ★★★ SEO 強化內容區塊 (增加文字密度與長尾關鍵字) ★★★ */}
+          {/* SEO 強化內容區塊 */}
           <div className="grid md:grid-cols-2 gap-12 mb-20 animate-in fade-in slide-in-from-bottom-10">
              <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
                 <h2 className="text-2xl font-bold text-cyan-900 mb-6 flex items-center gap-3">
