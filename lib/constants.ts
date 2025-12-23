@@ -1,4 +1,3 @@
-
 import { OperatingHours, ServiceItem, Symptom, Doctor, Clinic, AllianceHospital } from './types';
 
 export const CLINIC_INFO = {
@@ -37,10 +36,9 @@ export const SCHEDULE_CONTEXT = `
 晚診: 週一、三、五 18:00 - 21:00
 `;
 
-// ★★★ SEO 重點修改：強化服務描述與關鍵字密度 ★★★
 export const SERVICES: ServiceItem[] = [
   {
-    title: "血液透析中心", // 修改標題更精準
+    title: "血液透析中心",
     description: "醫學中心等級的洗腎環境，採用德國原裝透析機與雙重RO純水處理，提供小港、鳳山、林園地區腎友最安心的選擇。",
     icon: "Activity",
     items: [
@@ -52,7 +50,7 @@ export const SERVICES: ServiceItem[] = [
     ]
   },
   {
-    title: "慢性病整合照護", // 修改標題涵蓋三高
+    title: "慢性病整合照護",
     description: "糖尿病與高血壓是腎臟病的主因。我們提供一站式的三高管理，不僅開藥，更教您如何透過飲食逆轉數值。",
     icon: "Stethoscope",
     items: [
@@ -100,7 +98,6 @@ export const KIDNEY_SYMPTOMS: Symptom[] = [
   { id: 'diabetes', question: '本身是否有糖尿病病史?', riskWeight: 3 },
 ];
 
-// 1. 在這裡重新定義 Article 格式 (補上 imageUrl)
 export interface Article {
   id: string;
   slug: string;
@@ -110,10 +107,9 @@ export interface Article {
   category: string;
   tags: string[];
   content: string;
-  imageUrl?: string; // ✅ 這是新加的圖片欄位
+  imageUrl?: string;
 }
 
-// 2. 更新後的文章列表 (已補上 imageUrl)
 export const ARTICLES: Article[] = [
   {
     id: '6',
@@ -123,7 +119,7 @@ export const ARTICLES: Article[] = [
     date: '2025.12.08',
     category: '症狀自我檢測',
     tags: ['泡泡尿', '蛋白尿', '洗腎前兆', '高雄腎臟科'],
-    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80", // ✅ 圖片
+    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
     content: `在我們位於高雄小港的高健診所門診中，最常聽到患者焦急地問：「醫師，我今天早上小便有泡泡，是不是要洗腎了？」腎臟病素有「沉默殺手」之稱，根據台灣腎臟醫學會的統計，台灣慢性腎臟病 (CKD) 的盛行率高達 11.9%，但因初期症狀不明顯，許多人往往錯失了黃金治療期。
 
 這篇文章將由高健診所的醫療團隊，為您解析如何判斷真正的「蛋白尿」，以及日常生活中該如何透過飲食與檢測，守護您的腎臟健康。
@@ -167,7 +163,7 @@ export const ARTICLES: Article[] = [
     date: '2024.12.06',
     category: '慢性病防治',
     tags: ['腎臟病徵兆', '水腫', '洗腎前兆', '名醫專欄'],
-    imageUrl: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80", // ✅ 圖片
+    imageUrl: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80",
     content: `台灣素有「洗腎王國」之稱，許多民眾常有疑問：「我吃了一輩子都沒事，為什麼突然要洗腎？」
 
 國內腎臟移植權威李伯璋醫師在訪談中指出，腎臟不只是排尿的器官，更掌管著全身的水分代謝。臨床上曾有案例，患者因腎衰竭導致嚴重積水，毒素排不出去，晚上完全無法平躺睡覺，只能趴在桌上睡（端坐呼吸），檢查後發現心臟因負荷過重，已經腫得像一顆「小玉西瓜」。
@@ -218,7 +214,7 @@ export const ARTICLES: Article[] = [
     date: '2024.03.15',
     category: '症狀與迷思',
     tags: ['蛋白尿', '腎臟病', '自我檢測'],
-    imageUrl: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=800&q=80", // ✅ 圖片
+    imageUrl: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=800&q=80",
     content: `看到馬桶裡有泡泡，先別慌張！「泡泡尿」確實是腎臟病的警訊之一，但並非所有泡泡都是蛋白尿。
 
 以下教您 3 個觀察重點，自我判斷風險：
@@ -243,7 +239,7 @@ export const ARTICLES: Article[] = [
     date: '2024.02.28',
     category: '慢性病管理',
     tags: ['糖尿病', '飲食衛教', '三高控制'],
-    imageUrl: "https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?auto=format&fit=crop&w=800&q=80", // ✅ 圖片
+    imageUrl: "https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?auto=format&fit=crop&w=800&q=80",
     content: `台灣有接近一半的洗腎患者，起因都是糖尿病控制不佳。高血糖會導致血管病變，進而破壞腎臟的過濾功能。
 
 糖尿病友護腎的三大關鍵：
@@ -269,7 +265,7 @@ export const ARTICLES: Article[] = [
     date: '2024.01.10',
     category: '透析治療',
     tags: ['血液透析', '洗腎', '衛教'],
-    imageUrl: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80", // ✅ 圖片
+    imageUrl: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80",
     content: `當腎臟功能剩下不到正常的 10-15%，且出現尿毒症狀（如噁心、嘔吐、呼吸困難、嚴重水腫）時，醫師會建議開始準備透析治療，也就是俗稱的「洗腎」。
 
 許多人聽到洗腎就覺得人生黑白，其實現在的透析技術非常進步，只要配合治療，腎友依然可以出國旅遊、享受美食、擁有良好的生活品質。
@@ -299,7 +295,7 @@ export const ARTICLES: Article[] = [
     date: '2023.12.05',
     category: '疾病預防',
     tags: ['痛風', '高尿酸', '預防醫學'],
-    imageUrl: "https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=800&q=80", // ✅ 圖片
+    imageUrl: "https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=800&q=80",
     content: `大家都知道痛風發作時關節會痛得受不了，但您知道嗎？高尿酸血症其實也是腎臟的沈默殺手！
 
 **尿酸如何傷害腎臟？**
@@ -316,12 +312,11 @@ export const ARTICLES: Article[] = [
   }
 ];
 
-// ★★★ SEO 重點修改：加入權威認證關鍵字 ★★★
 export const MEDICAL_TEAM: Doctor[] = [
   {
     name: "洪錦傳",
     title: "院長 / 主治醫師",
-    specialties: ["腎臟專科", "內科", "血液透析", "糖尿病共同照護"],
+    specialties: ["腎臟專科", "內科", "糖尿病共同照護"],
     experience: [
       "高雄榮總內科部 腎臟科主治醫師",
       "屏東東港安泰醫院 腎臟科主治醫師"
@@ -335,7 +330,7 @@ export const MEDICAL_TEAM: Doctor[] = [
   {
     name: "吳美美",
     title: "主治醫師",
-    specialties: ["腎臟專科", "內科", "高血壓治療", "慢性腎病防治"],
+    specialties: ["腎臟專科", "內科", "三高慢性腎病防治"],
     experience: [
       "台中榮民總院 腎臟內科醫師",
       "高雄聖功醫院 腎臟内科主治醫師",
@@ -345,6 +340,22 @@ export const MEDICAL_TEAM: Doctor[] = [
       "台灣內科醫學會 專科醫師",
       "台灣腎臟醫學會 專科醫師",
       "糖尿病共同照護網 認證醫師"
+    ]
+  },
+  {
+    name: "護理照護團隊",
+    title: "20 年資歷",
+    specialties: ["急重症照護", "雙證照護理", "門診照護"],
+    experience: [
+      "擁有 20 年以上 臨床血液透析照護經驗",
+      "醫學中心等級照護標準，專注併發症預防",
+      "具備血液透析與腹膜透析雙專業護理證照",
+      "提供重症諮詢與在地門診服務"
+    ],
+    certifications: [
+      "國家級護理師執照",
+      "血液透析與腹膜透析專科護理認證",
+      "ACLS 高級心臟救命術認證"
     ]
   }
 ];

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ServiceItem } from '../types';
+import { ServiceItem } from '@/lib/constants';
 import { Activity, Stethoscope, ClipboardList, ShieldCheck } from 'lucide-react';
 
 interface ServiceCardProps {

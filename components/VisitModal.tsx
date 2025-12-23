@@ -45,7 +45,7 @@ const VisitModal: React.FC<VisitModalProps> = ({ isOpen, onClose }) => {
             {/* 介紹區塊 2 */}
             <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
                 <p className="text-[15px] leading-relaxed text-slate-700">
-                    歡迎家屬與腎友親臨參觀，將由<span className="text-cyan-700 font-bold">專業護理長</span>親自為您解說環境與設備，讓您安心選擇。
+                    歡迎家屬與腎友親臨參觀，將由<span className="text-cyan-700 font-bold">專業醫護團隊</span>您解說服務與環境設備，讓您安心選擇。
                 </p>
             </div>
 
