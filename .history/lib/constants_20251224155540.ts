@@ -1,6 +1,8 @@
-import { OperatingHours, ServiceItem, Symptom, Doctor, Clinic, AllianceHospital } from './types';
+// lib/constants.ts
+import { OperatingHours, ServiceItem, Symptom, Article, Doctor, Clinic, AllianceHospital, ClinicInfo } from './types';
 
-export const CLINIC_INFO = {
+// 1. 診所基本資訊
+export const CLINIC_INFO: ClinicInfo = {
   name: "高健診所",
   slogan: "高雄市民的健康就交給高健診所",
   address: "812高雄市小港區沿海一路88號",
@@ -9,6 +11,7 @@ export const CLINIC_INFO = {
   mapLink: "https://www.google.com/maps/search/?api=1&query=高健診所+高雄市小港區沿海一路88號"
 };
 
+// 2. 營業時間
 export const OPERATING_HOURS: OperatingHours[] = [
   { day: "星期一", time: "08:00–22:00", isOpen: true },
   { day: "星期二", time: "08:00–16:00", isOpen: true },
@@ -19,6 +22,7 @@ export const OPERATING_HOURS: OperatingHours[] = [
   { day: "星期日", time: "休息", isOpen: false },
 ];
 
+// 3. 門診時間說明文字
 export const SCHEDULE_CONTEXT = `
 詳細門診與洗腎時間:
 
@@ -36,6 +40,7 @@ export const SCHEDULE_CONTEXT = `
 晚診: 週一、三、五 18:00 - 21:00
 `;
 
+// 4. 服務項目 (SEO 重點修改)
 export const SERVICES: ServiceItem[] = [
   {
     title: "血液透析中心",
@@ -87,6 +92,7 @@ export const SERVICES: ServiceItem[] = [
   }
 ];
 
+// 5. 腎臟病症狀 (新增)
 export const KIDNEY_SYMPTOMS: Symptom[] = [
   { id: 'foam', question: '小便時是否有不易消散的泡沫 (蛋白尿)?', riskWeight: 2 },
   { id: 'edema', question: '最近是否感覺下肢或臉部容易水腫?', riskWeight: 2 },
@@ -98,18 +104,7 @@ export const KIDNEY_SYMPTOMS: Symptom[] = [
   { id: 'diabetes', question: '本身是否有糖尿病病史?', riskWeight: 3 },
 ];
 
-export interface Article {
-  id: string;
-  slug: string;
-  title: string;
-  summary: string;
-  date: string;
-  category: string;
-  tags: string[];
-  content: string;
-  imageUrl?: string;
-}
-
+// 6. 衛教文章
 export const ARTICLES: Article[] = [
   {
     id: '6',
@@ -119,7 +114,6 @@ export const ARTICLES: Article[] = [
     date: '2025.12.08',
     category: '症狀自我檢測',
     tags: ['泡泡尿', '蛋白尿', '洗腎前兆', '高雄腎臟科'],
-    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
     content: `在我們位於高雄小港的高健診所門診中，最常聽到患者焦急地問：「醫師，我今天早上小便有泡泡，是不是要洗腎了？」腎臟病素有「沉默殺手」之稱，根據台灣腎臟醫學會的統計，台灣慢性腎臟病 (CKD) 的盛行率高達 11.9%，但因初期症狀不明顯，許多人往往錯失了黃金治療期。
 
 這篇文章將由高健診所的醫療團隊，為您解析如何判斷真正的「蛋白尿」，以及日常生活中該如何透過飲食與檢測，守護您的腎臟健康。
@@ -163,7 +157,6 @@ export const ARTICLES: Article[] = [
     date: '2024.12.06',
     category: '慢性病防治',
     tags: ['腎臟病徵兆', '水腫', '洗腎前兆', '名醫專欄'],
-    imageUrl: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80",
     content: `台灣素有「洗腎王國」之稱，許多民眾常有疑問：「我吃了一輩子都沒事，為什麼突然要洗腎？」
 
 國內腎臟移植權威李伯璋醫師在訪談中指出，腎臟不只是排尿的器官，更掌管著全身的水分代謝。臨床上曾有案例，患者因腎衰竭導致嚴重積水，毒素排不出去，晚上完全無法平躺睡覺，只能趴在桌上睡（端坐呼吸），檢查後發現心臟因負荷過重，已經腫得像一顆「小玉西瓜」。
@@ -214,7 +207,6 @@ export const ARTICLES: Article[] = [
     date: '2024.03.15',
     category: '症狀與迷思',
     tags: ['蛋白尿', '腎臟病', '自我檢測'],
-    imageUrl: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=800&q=80",
     content: `看到馬桶裡有泡泡，先別慌張！「泡泡尿」確實是腎臟病的警訊之一，但並非所有泡泡都是蛋白尿。
 
 以下教您 3 個觀察重點，自我判斷風險：
@@ -239,7 +231,6 @@ export const ARTICLES: Article[] = [
     date: '2024.02.28',
     category: '慢性病管理',
     tags: ['糖尿病', '飲食衛教', '三高控制'],
-    imageUrl: "https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?auto=format&fit=crop&w=800&q=80",
     content: `台灣有接近一半的洗腎患者，起因都是糖尿病控制不佳。高血糖會導致血管病變，進而破壞腎臟的過濾功能。
 
 糖尿病友護腎的三大關鍵：
@@ -265,7 +256,6 @@ export const ARTICLES: Article[] = [
     date: '2024.01.10',
     category: '透析治療',
     tags: ['血液透析', '洗腎', '衛教'],
-    imageUrl: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80",
     content: `當腎臟功能剩下不到正常的 10-15%，且出現尿毒症狀（如噁心、嘔吐、呼吸困難、嚴重水腫）時，醫師會建議開始準備透析治療，也就是俗稱的「洗腎」。
 
 許多人聽到洗腎就覺得人生黑白，其實現在的透析技術非常進步，只要配合治療，腎友依然可以出國旅遊、享受美食、擁有良好的生活品質。
@@ -295,7 +285,6 @@ export const ARTICLES: Article[] = [
     date: '2023.12.05',
     category: '疾病預防',
     tags: ['痛風', '高尿酸', '預防醫學'],
-    imageUrl: "https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=800&q=80",
     content: `大家都知道痛風發作時關節會痛得受不了，但您知道嗎？高尿酸血症其實也是腎臟的沈默殺手！
 
 **尿酸如何傷害腎臟？**
@@ -312,11 +301,12 @@ export const ARTICLES: Article[] = [
   }
 ];
 
+// 7. 醫療團隊 (包含權威認證)
 export const MEDICAL_TEAM: Doctor[] = [
   {
     name: "洪錦傳",
     title: "院長 / 主治醫師",
-    specialties: ["腎臟專科", "內科", "糖尿病共同照護"],
+    specialties: ["腎臟專科", "內科", "血液透析", "糖尿病共同照護"],
     experience: [
       "高雄榮總內科部 腎臟科主治醫師",
       "屏東東港安泰醫院 腎臟科主治醫師"
@@ -330,7 +320,7 @@ export const MEDICAL_TEAM: Doctor[] = [
   {
     name: "吳美美",
     title: "主治醫師",
-    specialties: ["腎臟專科", "內科", "三高慢性腎病防治"],
+    specialties: ["腎臟專科", "內科", "高血壓治療", "慢性腎病防治"],
     experience: [
       "台中榮民總院 腎臟內科醫師",
       "高雄聖功醫院 腎臟内科主治醫師",
@@ -341,25 +331,10 @@ export const MEDICAL_TEAM: Doctor[] = [
       "台灣腎臟醫學會 專科醫師",
       "糖尿病共同照護網 認證醫師"
     ]
-  },
-  {
-    name: "護理照護團隊",
-    title: "20 年資歷",
-    specialties: ["急重症照護", "雙證照護理", "門診照護"],
-    experience: [
-      "擁有 20 年以上 臨床血液透析照護經驗",
-      "醫學中心等級照護標準，專注併發症預防",
-      "具備血液透析與腹膜透析雙專業護理證照",
-      "提供重症諮詢與在地門診服務"
-    ],
-    certifications: [
-      "國家級護理師執照",
-      "血液透析與腹膜透析專科護理認證",
-      "ACLS 高級心臟救命術認證"
-    ]
   }
 ];
 
+// 8. 高雄診所名冊
 export const KAOHSIUNG_CLINICS_LIST: Clinic[] = [
   { name: "高健診所", address: "高雄市小港區沿海一路88號", phone: "07-8027828" },
   { name: "惠仁醫院", address: "高雄市新興區中山一路67-2號", phone: "07-2010196" },
@@ -456,6 +431,7 @@ export const KAOHSIUNG_CLINICS_LIST: Clinic[] = [
   { name: "為好診所", address: "高雄市鼓山區九如四路957號", phone: "07-5215489#112" }
 ];
 
+// 9. 合作醫院
 export const ALLIANCE_HOSPITALS: AllianceHospital[] = [
   { 
     name: "高雄市政府衛生局", 
