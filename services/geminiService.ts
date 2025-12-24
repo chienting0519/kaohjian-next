@@ -2,10 +2,10 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export const getGeminiResponse = async (message: string) => {
   try {
-    // 1. 在函式內部才讀取 Key (延遲執行)
+    // 1. 在函式內部才讀取 Key (這是防止部署崩潰的關鍵！)
     const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
     
-    // 2. 如果沒有 Key，優雅地回傳錯誤，而不是讓程式崩潰
+    // 2. 如果沒有 Key，優雅地回傳錯誤，而不是讓程式當機
     if (!apiKey) {
       console.error("❌ 尚未設定 Gemini API Key");
       return "系統暫時無法回應，請聯繫診所櫃檯。";
