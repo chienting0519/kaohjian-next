@@ -6,7 +6,18 @@ export interface ServiceItem {
   items: string[]; 
   icon: any;
 }
-
+// 確保有加 export
+export const ARTICLES = [
+  {
+    id: '1',
+    title: '文章標題範例',
+    date: '2025-01-01',
+    category: '衛教資訊',
+    content: '這裡是文章內容...',
+    image: '/images/sample.jpg'
+  },
+  // ... 其他文章
+];
 // 2. 診所基本資訊
 export const CLINIC_INFO = {
   name: '高健診所',
