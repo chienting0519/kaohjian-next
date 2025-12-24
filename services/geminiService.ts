@@ -61,7 +61,7 @@ export const sendMessageToGemini = async (userMessage: string, history: string[]
     // 初始化 SDK
     const genAI = new GoogleGenerativeAI(apiKey);
     // 使用 gemini-pro 模型 (目前穩定版)
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // 執行輸入淨化
     const safeUserMessage = sanitizeInput(userMessage);
