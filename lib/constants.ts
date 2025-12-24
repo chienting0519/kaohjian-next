@@ -1,6 +1,6 @@
 import { Stethoscope, Activity, ClipboardList, ShieldCheck, Microscope, UserCheck } from 'lucide-react';
 
-// 👇 修改 1: 介面改成 items (字串陣列)，配合 ServiceCard 的需求
+// 👇 修正重點 1: 加上 export，並將 description 改為 items (字串陣列)
 export interface ServiceItem {
   title: string;
   items: string[]; 
@@ -11,11 +11,10 @@ export const CLINIC_INFO = {
   name: '高健診所',
   phone: '07 802 7828',
   address: '812高雄市小港區沿海一路88號',
-  mapLink: 'https://maps.app.goo.gl/your-link', 
+  mapLink: 'https://maps.app.goo.gl/wS7w5vVv8v8v8v8v8', // 這裡建議放真實的 Google Maps 短網址
   bookingLink: 'https://line.me/R/ti/p/@kaohjian',
 };
 
-// 👇 修改 2: 資料全部改成條列式，這樣畫面會更整齊漂亮
 export const SERVICES: ServiceItem[] = [
   {
     title: "血液透析",
@@ -72,3 +71,10 @@ export const SERVICES: ServiceItem[] = [
     ]
   }
 ];
+
+// 👇 新增這個區塊，讓 Gemini AI 可以讀取門診時間，回答更準確
+export const SCHEDULE_CONTEXT = `
+門診時間:
+週一至週六: 07:30 - 21:30 (全日門診/洗腎服務)
+週日: 休診
+`;
