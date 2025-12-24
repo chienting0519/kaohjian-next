@@ -1,6 +1,6 @@
 import { Stethoscope, Activity, ClipboardList, ShieldCheck, Microscope, HeartPulse, Brain, UserCheck } from 'lucide-react';
 
-// 👇 這裡加上了 export，解決錯誤的關鍵
+// 👇 修改重點：這裡原本少了 export，我幫您加上去了！
 export interface ServiceItem {
   title: string;
   description: string;
@@ -11,8 +11,8 @@ export const CLINIC_INFO = {
   name: '高健診所',
   phone: '07 802 7828',
   address: '812高雄市小港區沿海一路88號',
-  mapLink: 'https://maps.app.goo.gl/wJ8J5j8J5j8J5j8J5', // 範例連結，可自行替換
-  bookingLink: 'https://line.me/R/ti/p/@kaohjian', // 範例 Line 連結
+  mapLink: 'https://maps.google.com/maps?q=$?q=812高雄市小港區沿海一路88號',
+  bookingLink: 'https://line.me/R/ti/p/@kaohjian', // 假設這是您的 Line 連結
 };
 
 export const SERVICES: ServiceItem[] = [
