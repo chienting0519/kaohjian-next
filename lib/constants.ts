@@ -6,35 +6,45 @@ export interface ServiceItem {
   items: string[]; 
   icon: any;
 }
-// 確保有加 export
+
+// 2. 衛教文章資料 (已修正：補上 slug, imageUrl, summary 以配合 page.tsx)
 export const ARTICLES = [
   {
     id: '1',
-    title: '文章標題範例',
+    slug: 'kidney-disease-prevention', // 補上 slug
+    title: '慢性腎臟病預防與保健',
     date: '2025-01-01',
     category: '衛教資訊',
-    content: '這裡是文章內容...',
-    image: '/images/sample.jpg'
+    summary: '了解慢性腎臟病的成因與預防方法，從飲食與生活習慣做起...', // 補上摘要
+    content: '這裡是詳細的文章內容...\n\n慢性腎臟病是目前台灣常見的慢性疾病之一...',
+    imageUrl: '/images/sample.jpg' // 改名為 imageUrl 以配合頁面使用
   },
-  // ... 其他文章
+  {
+    id: '2',
+    slug: 'diabetes-control',
+    title: '糖尿病患的腎臟照護',
+    date: '2025-02-15',
+    category: '慢性病照護',
+    summary: '糖尿病是洗腎的主因之一，如何控制血糖保護腎臟？',
+    content: '糖尿病腎病變的預防重點在於...',
+    imageUrl: '/images/diabetes.jpg'
+  }
 ];
 
-
-
-// 2. 診所基本資訊
+// 3. 診所基本資訊
 export const CLINIC_INFO = {
   name: '高健診所',
   phone: '07 802 7828',
   address: '812高雄市小港區沿海一路88號',
-  mapLink: 'https://maps.app.goo.gl/generic_map_link', // 您可替換為真實連結
+  mapLink: 'https://maps.app.goo.gl/generic_map_link', 
   bookingLink: 'https://line.me/R/ti/p/@kaohjian',
 };
 
-// 3. 服務項目資料 (已修復為陣列格式)
+// 4. 服務項目資料
 export const SERVICES: ServiceItem[] = [
   {
-    title: "血液透析中心", // 修改標題更精準
-    icon: "Activity",
+    title: "血液透析中心",
+    icon: Activity, // 修正：直接使用元件引用，如果要用字串需在 map 時轉換
     items: [
       "高效率血液透析 (HD/HDF) - 改善疲倦與皮膚搔癢",
       "雙重逆滲透 (RO) 純水系統 - 嚴格控制細菌與內毒素",
@@ -44,8 +54,8 @@ export const SERVICES: ServiceItem[] = [
     ]
   },
   {
-    title: "慢性病整合照護", // 修改標題涵蓋三高
-    icon: "Stethoscope",
+    title: "慢性病整合照護",
+    icon: Stethoscope,
     items: [
       "糖尿病共照網認證 - 施打胰島素與血糖監測教學",
       "高血壓藥物精準調控 - 保護腎臟血管",
@@ -56,7 +66,7 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     title: "腎臟健康檢查",
-    icon: "ClipboardList",
+    icon: ClipboardList,
     items: [
       "免費成人健康檢查 (30歲以上每3年1次)",
       "精準微量白蛋白尿檢測 (ACR) - 糖尿病腎病變篩檢",
@@ -67,7 +77,7 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     title: "預防醫學與營養",
-    icon: "ShieldCheck",
+    icon: ShieldCheck,
     items: [
       "低蛋白飲食衛教 - 延緩洗腎時程",
       "ILIB 靜脈雷射 - 促進血液循環",
@@ -78,12 +88,12 @@ export const SERVICES: ServiceItem[] = [
   }
 ];
 
-// 👇 4. 補上缺失的醫療團隊資料 (這是本次修復的重點！)
+// 5. 醫療團隊資料
 export const MEDICAL_TEAM = [
   {
-    name: "陳醫師", // 您之後可以修改為真實醫師姓名
+    name: "陳醫師", 
     title: "院長 / 腎臟專科醫師",
-    image: "/doctors/doctor-1.webp", // 如果沒有圖片，系統會顯示預設圖
+    image: "/doctors/doctor-1.webp",
     specialties: ["血液透析", "腹膜透析", "急慢性腎臟病", "高血壓與糖尿病照護"],
     description: "致力於提供以病人為中心的優質腎臟照護，擁有豐富的臨床經驗，視病猶親。"
   },
@@ -96,7 +106,27 @@ export const MEDICAL_TEAM = [
   }
 ];
 
-// 5. 門診時間 (給 AI 參考用)
+// 6. 高雄診所名冊 (這是之前報錯缺少的變數)
+export const KAOHSIUNG_CLINICS_LIST = [
+  {
+    name: '高健診所',
+    address: '高雄市小港區沿海一路88號',
+    phone: '07 802 7828',
+  },
+  // 為了列表豐富度，這裡先預留幾個範例，你可以隨時刪除
+  {
+    name: '其他診所範例 A',
+    address: '高雄市苓雅區三多路123號',
+    phone: '07 123 4567',
+  },
+  {
+    name: '其他診所範例 B',
+    address: '高雄市前鎮區中山路456號',
+    phone: '07 765 4321',
+  }
+];
+
+// 7. 門診時間 (給 AI 參考用)
 export const SCHEDULE_CONTEXT = `
 詳細門診與洗腎時間:
 
