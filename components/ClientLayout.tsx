@@ -98,7 +98,7 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
     "sameAs": [
       "https://health.businessweekly.com.tw/JHospital.aspx?id=HOSP000002974",
       "https://kb.commonhealth.com.tw/hospitals/8966.html",
-      "https://khjclinic.com/clinics", // 這裡保留 SEO 的 sameAs 指向，如果您之後網域開通這是有幫助的
+      "https://khjclinic.com", // ✅ SEO 連結更新
       "https://www.clinics.com.tw/hospital/3502112113",
       "https://www.tckdf.org.tw/Main/Index"
     ]
@@ -303,10 +303,15 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
                         <a href="https://www.clinics.com.tw/hospital/3502112113" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">台灣診所網</a>
                         <a href="https://www.tckdf.org.tw/Main/Index" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">腎臟病防治基金會</a>
                         
-                        {/* ✅ 修正：使用內部連結 Link 連到您的 "/clinics" 頁面 */}
-                        <Link href="/clinics" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">
+                        {/* ✅ 修正：指向您的正式網域 */}
+                        <a 
+                           href="https://khjclinic.com" 
+                           target="_blank" 
+                           rel="noreferrer" 
+                           className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block"
+                        >
                             高雄市洗腎診所
-                        </Link>
+                        </a>
                     </div>
                 </div>
 
