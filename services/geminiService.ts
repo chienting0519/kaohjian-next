@@ -53,7 +53,7 @@ export const sendMessageToGemini = async (userMessage: string, history: string[]
     // 初始化 SDK
     const genAI = new GoogleGenerativeAI(apiKey);
     // 使用 gemini模型 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // 執行輸入淨化
     const safeUserMessage = sanitizeInput(userMessage);
@@ -145,8 +145,6 @@ export const sendMessageToGemini = async (userMessage: string, history: string[]
 
   } catch (error) {
     console.error("Gemini API Error:", error);
-    const errorMessage = error instanceof Error ? error.message : String(error);
-    const keyStatus = apiKey ? `KeyLen:${apiKey.length}` : "NoKey";
-    return `抱歉，請稍後再問我一次。(Debug: ${errorMessage}, ${keyStatus})`;
+    return "抱歉，請稍後再問我一次。";
   }
 };
