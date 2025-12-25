@@ -20,7 +20,7 @@ const AIChat: React.FC<AIChatProps> = ({ isOpen, setIsOpen }) => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'model',
-      text: '\n我是高健診所 AI 健康助理\n我會協助您解答 :\n**洗腎飲食**\n**護腎飲食**\n**腎臟健康**\n**門診時間**\n**預約掛號**\n**接送服務**',
+      text: '\n我是高健診所AI醫療助理\n我會協助您解答 :\n**洗腎飲食**\n**護腎飲食**\n**腎臟健康**\n**門診時間**\n**預約掛號**\n**接送服務**',
       timestamp: new Date()
     }
   ]);
@@ -171,7 +171,7 @@ const AIChat: React.FC<AIChatProps> = ({ isOpen, setIsOpen }) => {
               <h3 className="font-bold text-lg tracking-wide text-white drop-shadow-sm">高健 AI 助理</h3>
               <span className="text-[11px] text-cyan-50 flex items-center gap-1.5 opacity-90 font-light">
                 <span className="w-2 h-2 bg-lime-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(163,230,53,0.8)]"></span>
-                腎臟專科諮詢中
+                諮詢中
               </span>
             </div>
           </div>
