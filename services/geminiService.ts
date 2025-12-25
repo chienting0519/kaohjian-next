@@ -52,7 +52,7 @@ export const sendMessageToGemini = async (userMessage: string, history: string[]
   try {
     // 初始化 SDK
     const genAI = new GoogleGenerativeAI(apiKey);
-    // 使用 gemini-pro 模型 (目前穩定版)
+    // 使用 gemini模型 
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // 執行輸入淨化
