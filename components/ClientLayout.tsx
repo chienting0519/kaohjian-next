@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, createContext } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Bell, Building2, MessageCircle, MapPin, Phone } from 'lucide-react';
 import { CLINIC_INFO } from '@/lib/constants';
@@ -121,9 +122,12 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
 
               {/* Logo 區塊：靠左對齊 */}
               <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
-                <img
+                <Image
                   src="/logo.webp"
                   alt="高健診所 Logo"
+                  width={56}
+                  height={56}
+                  priority
                   className="w-10 h-10 sm:w-14 sm:h-14 object-contain group-hover:scale-105 transition-transform duration-300 flex-shrink-0"
                 />
                 <div className="flex flex-col min-w-0 items-start justify-center text-left">
