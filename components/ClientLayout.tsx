@@ -67,8 +67,6 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
 
   const navLinks = [
 
-    { path: '/', label: '首頁' },
-
     { path: '/services', label: '服務項目' },
 
     { path: '/team', label: '醫療團隊' },
