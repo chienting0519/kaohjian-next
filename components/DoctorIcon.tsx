@@ -8,7 +8,7 @@ export const DoctorIcon = ({ className = "w-full h-full" }: { className?: string
   if (!imgError) {
     return (
       <img
-        src="/logo.webp"
+        src="/ai-logo.pngs"
         alt="高健診所 AI 助理"
         // 加上 rounded-full 以保持原本 SVG 的圓形頭像外觀
         className={`${className} object-cover rounded-full`}
@@ -28,19 +28,19 @@ export const DoctorIcon = ({ className = "w-full h-full" }: { className?: string
     >
       {/* 圓形背景 */}
       <circle cx="50" cy="50" r="50" className="fill-cyan-100" />
-      
+
       {/* 身體/白袍 */}
       <mask id="circleMask">
-         <circle cx="50" cy="50" r="50" fill="white" />
+        <circle cx="50" cy="50" r="50" fill="white" />
       </mask>
       <g mask="url(#circleMask)">
         {/* 襯衫 */}
         <path d="M20 90L50 60L80 90V110H20V90Z" fill="#bae6fd" />
-        
+
         {/* 白袍領口 */}
         <path d="M50 60L20 95H80L50 60Z" fill="white" />
         <path d="M15 100C15 80 30 65 50 65C70 65 85 80 85 100" fill="white" />
-        
+
         {/* 領帶 */}
         <path d="M50 65L45 70L50 100L55 70L50 65Z" className="fill-cyan-700" />
       </g>
@@ -78,11 +78,11 @@ export const DoctorIcon = ({ className = "w-full h-full" }: { className?: string
         <path d="M37 42L29 40" /> {/* 鏡腳左 */}
         <path d="M63 42L71 40" /> {/* 鏡腳右 */}
       </g>
-      
+
       {/* 眼睛 */}
       <circle cx="43" cy="42" r="1.5" className="fill-slate-800" />
       <circle cx="57" cy="42" r="1.5" className="fill-slate-800" />
-      
+
       {/* 微笑嘴巴 */}
       <path d="M46 52Q50 55 54 52" stroke="#d97706" strokeWidth="1.5" strokeLinecap="round" fill="none" />
 
