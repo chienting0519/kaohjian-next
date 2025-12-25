@@ -145,6 +145,6 @@ export const sendMessageToGemini = async (userMessage: string, history: string[]
 
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "抱歉，我現在有點累，請稍後再問我一次。";
+    return "抱歉，請稍後再問我一次。";
   }
 };
