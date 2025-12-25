@@ -18,10 +18,10 @@ const AIChat: React.FC<AIChatProps> = ({ isOpen, setIsOpen }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { 
-      role: 'model', 
-      text: '您好！有什麼我可以幫您的嗎？\n我是高健診所 AI 健康助理\n我會協助您解答 :\n**洗腎飲食**\n**護腎飲食**\n**腎臟健康**\n**門診時間**\n**預約掛號**\n**接送服務**', 
-      timestamp: new Date() 
+    {
+      role: 'model',
+      text: '\n我是高健診所 AI 健康助理\n我會協助您解答 :\n**洗腎飲食**\n**護腎飲食**\n**腎臟健康**\n**門診時間**\n**預約掛號**\n**接送服務**',
+      timestamp: new Date()
     }
   ]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -80,22 +80,22 @@ const AIChat: React.FC<AIChatProps> = ({ isOpen, setIsOpen }) => {
 
       const renderedParts = parts.map((part, partIdx) => {
         if (part.startsWith('((') && part.endsWith('))')) {
-            const guideText = part.slice(2, -2);
-            return <span key={partIdx} className="block w-full my-2 p-3 bg-orange-50 border-l-4 border-orange-400 text-orange-800 font-bold rounded-r text-sm leading-relaxed shadow-sm">{guideText}</span>;
+          const guideText = part.slice(2, -2);
+          return <span key={partIdx} className="block w-full my-2 p-3 bg-orange-50 border-l-4 border-orange-400 text-orange-800 font-bold rounded-r text-sm leading-relaxed shadow-sm">{guideText}</span>;
         }
         if (part.startsWith('[') && part.endsWith(']')) {
-            const warning = part.slice(2, -2);
-            return <span key={partIdx} className="text-red-600 font-extrabold mx-0.5 px-1 bg-red-50 rounded border border-red-100 shadow-sm text-[1.05em]">{warning}</span>;
+          const warning = part.slice(2, -2);
+          return <span key={partIdx} className="text-red-600 font-extrabold mx-0.5 px-1 bg-red-50 rounded border border-red-100 shadow-sm text-[1.05em]">{warning}</span>;
         }
         if (part.startsWith('{{') && part.endsWith('}}')) {
-            const highlight = part.slice(2, -2);
-            return <span key={partIdx} className="text-white font-bold mx-0.5 px-2 py-0.5 bg-lime-500 rounded shadow-sm text-[0.95em] tracking-wide">{highlight}</span>;
+          const highlight = part.slice(2, -2);
+          return <span key={partIdx} className="text-white font-bold mx-0.5 px-2 py-0.5 bg-lime-500 rounded shadow-sm text-[0.95em] tracking-wide">{highlight}</span>;
         }
         if (part.startsWith('**') && part.endsWith('**')) {
           const keyword = part.slice(2, -2);
           return (
-            <button 
-              key={partIdx} 
+            <button
+              key={partIdx}
               onClick={() => processMessage(keyword)}
               disabled={isLoading}
               className="inline-block font-bold text-cyan-700 cursor-pointer bg-cyan-50 hover:bg-cyan-100 border-b border-cyan-200 hover:border-cyan-400 rounded px-1.5 py-0.5 mx-0.5 transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -137,11 +137,11 @@ const AIChat: React.FC<AIChatProps> = ({ isOpen, setIsOpen }) => {
 
   return (
     // 🔥 強制固定在右下角，使用 inline-style 確保不會被 Tailwind 設定影響
-    <div 
-      style={{ 
-        position: 'fixed', 
-        bottom: '20px', 
-        right: '20px', 
+    <div
+      style={{
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
         zIndex: 99999,
         display: 'flex',
         flexDirection: 'column',
@@ -150,9 +150,9 @@ const AIChat: React.FC<AIChatProps> = ({ isOpen, setIsOpen }) => {
         pointerEvents: 'none' // 讓外層容器不擋住點擊
       }}
     >
-      
+
       {/* 1. 聊天視窗 */}
-      <div 
+      <div
         style={{ pointerEvents: 'auto' }} // 恢復視窗的可點擊性
         className={`
           bg-white rounded-2xl shadow-2xl w-[90vw] sm:w-[380px] h-[550px] max-h-[80vh]
@@ -165,22 +165,22 @@ const AIChat: React.FC<AIChatProps> = ({ isOpen, setIsOpen }) => {
         <div className="bg-gradient-to-r from-cyan-700 to-cyan-600 p-4 flex justify-between items-center text-white shadow-md shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-11 h-11 rounded-full border-2 border-white/40 shadow-lg overflow-hidden flex-shrink-0 bg-white">
-               <img src="/ai-logo.png" alt="Logo" className="w-full h-full object-cover" />
+              <img src="/ai-logo.png" alt="Logo" className="w-full h-full object-cover" />
             </div>
             <div>
               <h3 className="font-bold text-lg tracking-wide text-white drop-shadow-sm">高健 AI 助理</h3>
               <span className="text-[11px] text-cyan-50 flex items-center gap-1.5 opacity-90 font-light">
-                <span className="w-2 h-2 bg-lime-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(163,230,53,0.8)]"></span> 
+                <span className="w-2 h-2 bg-lime-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(163,230,53,0.8)]"></span>
                 腎臟專科諮詢中
               </span>
             </div>
           </div>
           {/* ❌ 關閉按鈕 */}
-          <button 
+          <button
             onClick={(e) => {
               e.stopPropagation(); // 防止事件冒泡
               setIsOpen(false);
-            }} 
+            }}
             className="hover:bg-white/10 p-2 rounded-full transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
@@ -199,7 +199,7 @@ const AIChat: React.FC<AIChatProps> = ({ isOpen, setIsOpen }) => {
           {isLoading && (
             <div className="flex justify-start">
               <div className="w-9 h-9 mr-2 flex-shrink-0 drop-shadow-sm">
-                  <DoctorIcon className="w-full h-full" />
+                <DoctorIcon className="w-full h-full" />
               </div>
               <div className="bg-white border border-slate-200 rounded-2xl rounded-tl-none px-5 py-4 shadow-sm flex items-center gap-3">
                 <Loader2 className="w-4 h-4 animate-spin text-cyan-600" />
@@ -221,7 +221,7 @@ const AIChat: React.FC<AIChatProps> = ({ isOpen, setIsOpen }) => {
               placeholder="請輸入您的健康問題..."
               className="flex-1 bg-slate-100 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm transition-all placeholder:text-slate-400"
             />
-            <button 
+            <button
               onClick={handleSendInput}
               disabled={!input.trim() || isLoading}
               className="bg-cyan-600 hover:bg-cyan-700 disabled:bg-slate-300 text-white rounded-xl px-4 py-2 transition-colors shadow-sm flex items-center justify-center w-12 cursor-pointer"
@@ -247,10 +247,10 @@ const AIChat: React.FC<AIChatProps> = ({ isOpen, setIsOpen }) => {
         {isOpen ? (
           <X className="w-8 h-8 text-white" />
         ) : (
-           <div className="w-full h-full rounded-full overflow-hidden relative">
-              <img src="/ai-logo.png" alt="AI" className="w-full h-full object-cover" />
-              <span className="absolute top-2 right-2 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
-           </div>
+          <div className="w-full h-full rounded-full overflow-hidden relative">
+            <img src="/ai-logo.png" alt="AI" className="w-full h-full object-cover" />
+            <span className="absolute top-2 right-2 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
+          </div>
         )}
       </button>
 

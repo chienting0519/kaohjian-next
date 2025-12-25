@@ -5,6 +5,7 @@
 import React, { useState, useEffect, createContext } from 'react';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { usePathname } from 'next/navigation';
 
@@ -24,7 +25,7 @@ export const LayoutContext = createContext<{
 
   setIsChatOpen: (isOpen: boolean) => void;
 
-}>({ setIsChatOpen: () => {} });
+}>({ setIsChatOpen: () => { } });
 
 
 
@@ -42,13 +43,13 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
- 
+
 
   const [isCheckupModalOpen, setIsCheckupModalOpen] = useState(false);
 
   const [isVisitModalOpen, setIsVisitModalOpen] = useState(false);
 
- 
+
 
   const pathname = usePathname();
 
@@ -214,7 +215,7 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
 
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans flex flex-col">
 
-     
+
 
       {/* 注入 SEO JSON-LD */}
 
@@ -238,20 +239,19 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
 
             <div className="flex justify-between items-center gap-4">
 
-             
+
 
               {/* Logo 區塊：靠左對齊 */}
 
               <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
 
-                <img
-
+                <Image
                   src="/logo.webp"
-
                   alt="高健診所 Logo"
-
+                  width={56}
+                  height={56}
+                  priority
                   className="w-10 h-10 sm:w-14 sm:h-14 object-contain group-hover:scale-105 transition-transform duration-300 flex-shrink-0"
-
                 />
 
                 <div className="flex flex-col min-w-0 items-start justify-center text-left">
@@ -278,17 +278,17 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
 
               <div className="hidden md:flex flex-1 items-center justify-center flex-nowrap min-w-0 overflow-visible">
 
-                 <div className="flex items-center gap-0 lg:gap-1 xl:gap-2">
+                <div className="flex items-center gap-0 lg:gap-1 xl:gap-2">
 
-                    {navLinks.map((link) => (
+                  {navLinks.map((link) => (
 
-                        <Link
+                    <Link
 
-                          key={link.path}
+                      key={link.path}
 
-                          href={link.path}
+                      href={link.path}
 
-                          className={`
+                      className={`
 
                             px-2 lg:px-3 py-2 rounded-full transition-all whitespace-nowrap font-bold
 
@@ -298,33 +298,33 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
 
                           `}
 
-                        >
+                    >
 
-                          {link.label}
+                      {link.label}
 
-                        </Link>
+                    </Link>
 
-                    ))}
+                  ))}
 
-                 </div>
+                </div>
 
-                 
 
-                 <a
 
-                   href={CLINIC_INFO.bookingLink}
+                <a
 
-                   target="_blank"
+                  href={CLINIC_INFO.bookingLink}
 
-                   rel="noreferrer"
+                  target="_blank"
 
-                   className="ml-2 lg:ml-3 bg-[#06c755] hover:bg-[#05b34c] text-white px-3 lg:px-5 py-1.5 lg:py-2 rounded-full font-bold transition-all shadow-sm shrink-0 whitespace-nowrap text-xs lg:text-sm"
+                  rel="noreferrer"
 
-                 >
+                  className="ml-2 lg:ml-3 bg-[#06c755] hover:bg-[#05b34c] text-white px-3 lg:px-5 py-1.5 lg:py-2 rounded-full font-bold transition-all shadow-sm shrink-0 whitespace-nowrap text-xs lg:text-sm"
 
-                   預約掛號
+                >
 
-                 </a>
+                  預約掛號
+
+                </a>
 
               </div>
 
@@ -356,47 +356,47 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
 
             <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-xl p-4 space-y-2">
 
-               {navLinks.map((link) => (
+              {navLinks.map((link) => (
 
-                  <Link
+                <Link
 
-                    key={link.path}
+                  key={link.path}
 
-                    href={link.path}
+                  href={link.path}
 
-                    onClick={() => setIsMenuOpen(false)}
+                  onClick={() => setIsMenuOpen(false)}
 
-                    className="block px-4 py-3 font-bold text-slate-600 hover:bg-slate-50 rounded-xl text-lg"
+                  className="block px-4 py-3 font-bold text-slate-600 hover:bg-slate-50 rounded-xl text-lg"
 
-                  >
+                >
 
-                    {link.label}
+                  {link.label}
 
-                  </Link>
+                </Link>
 
-               ))}
+              ))}
 
-               <div className="pt-4 mt-2 border-t border-slate-100">
+              <div className="pt-4 mt-2 border-t border-slate-100">
 
-                  <a
+                <a
 
-                    href={CLINIC_INFO.bookingLink}
+                  href={CLINIC_INFO.bookingLink}
 
-                    target="_blank"
+                  target="_blank"
 
-                    rel="noreferrer"
+                  rel="noreferrer"
 
-                    className="flex items-center justify-center w-full bg-[#06C755] hover:bg-[#05b64d] text-white py-3 rounded-xl font-bold text-lg shadow-sm gap-2"
+                  className="flex items-center justify-center w-full bg-[#06C755] hover:bg-[#05b64d] text-white py-3 rounded-xl font-bold text-lg shadow-sm gap-2"
 
-                  >
+                >
 
-                    <MessageCircle className="w-5 h-5 fill-current" />
+                  <MessageCircle className="w-5 h-5 fill-current" />
 
-                    LINE 預約掛號
+                  LINE 預約掛號
 
-                  </a>
+                </a>
 
-               </div>
+              </div>
 
             </div>
 
@@ -464,7 +464,7 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
 
           <LayoutContext.Provider value={{ setIsChatOpen }}>
 
-             {children}
+            {children}
 
           </LayoutContext.Provider>
 
@@ -480,197 +480,197 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
 
         <div className="container mx-auto px-4">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
 
-               
 
-                {/* 1. 診所介紹 */}
 
-                <div className="space-y-4">
+            {/* 1. 診所介紹 */}
 
-                    <h3 className="text-white text-xl font-bold mb-4">{CLINIC_INFO.name}</h3>
+            <div className="space-y-4">
 
-                    <p className="text-slate-400 leading-relaxed text-sm">
+              <h3 className="text-white text-xl font-bold mb-4">{CLINIC_INFO.name}</h3>
 
-                       高雄市民的健康就交給高健診所。<br/>
+              <p className="text-slate-400 leading-relaxed text-sm">
 
-                       提供小港地區最優質的洗腎與內科醫療服務。
+                高雄市民的健康就交給高健診所。<br />
 
-                    </p>
+                提供小港地區最優質的洗腎與內科醫療服務。
 
-                    <p className="text-lime-400 font-bold mt-2">
+              </p>
 
-                       小港、鳳山、林園、大寮、前鎮溫馨接送
+              <p className="text-lime-400 font-bold mt-2">
 
-                    </p>
+                小港、鳳山、林園、大寮、前鎮溫馨接送
 
-                </div>
-
-
-
-                {/* 2. 聯絡資訊 + 地圖 */}
-
-                <div className="space-y-4">
-
-                    <h3 className="text-white text-lg font-bold mb-4 border-l-4 border-lime-500 pl-3">聯絡資訊</h3>
-
-                    <ul className="space-y-3">
-
-                        <li className="flex items-start gap-3">
-
-                            <MapPin className="w-5 h-5 text-lime-500 flex-shrink-0 mt-0.5" />
-
-                            <span className="text-sm">{CLINIC_INFO.address}</span>
-
-                        </li>
-
-                        <li className="flex items-center gap-3">
-
-                            <Phone className="w-5 h-5 text-lime-500 flex-shrink-0" />
-
-                            <a href={`tel:${CLINIC_INFO.phone}`} className="text-sm hover:text-white transition-colors">{CLINIC_INFO.phone}</a>
-
-                        </li>
-
-                    </ul>
-
-                    {/* 小地圖 */}
-
-                    <div className="mt-4 rounded-xl overflow-hidden border border-slate-700 h-32 relative group">
-
-                        <iframe
-
-                           src={`https://maps.google.com/maps?q=${encodeURIComponent(CLINIC_INFO.address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
-
-                           width="100%"
-
-                           height="100%"
-
-                           style={{border:0}}
-
-                           loading="lazy"
-
-                           className="group-hover:opacity-75 transition-opacity"
-
-                        ></iframe>
-
-                        <a
-
-                          href={CLINIC_INFO.mapLink}
-
-                          target="_blank"
-
-                          rel="noreferrer"
-
-                          className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity text-white font-bold text-sm"
-
-                        >
-
-                          顯示詳細地圖
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-
-                {/* 3. 快速連結 */}
-
-                <div>
-
-                    <h3 className="text-white text-lg font-bold mb-4 border-l-4 border-lime-500 pl-3">快速連結</h3>
-
-                    <div className="grid grid-cols-2 gap-2">
-
-                        {navLinks.map(link => (
-
-                            <Link key={link.path} href={link.path} className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">
-
-                                {link.label}
-
-                            </Link>
-
-                        ))}
-
-                       
-
-                        {/* 🔗 外部權威網站連結 */}
-
-                        <a href="https://health.businessweekly.com.tw/JHospital.aspx?id=HOSP000002974" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">良醫健康網</a>
-
-                        <a href="https://kb.commonhealth.com.tw/hospitals/8966.html" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">康健知識庫</a>
-
-                        <a href="https://www.clinics.com.tw/hospital/3502112113" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">台灣診所網</a>
-
-                        <a href="https://www.tckdf.org.tw/Main/Index" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">腎臟病防治基金會</a>
-
-                       
-
-{/* ✅ 修正後：使用 Link 指向你做好的 /clinics 頁面 */}
-
-<Link
-
-   href="/clinics"
-
-   className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block"
-
->
-
-    高雄市洗腎診所
-
-</Link>                    </div>
-
-                </div>
-
-
-
-                {/* 4. 醫療聯盟 */}
-
-                <div>
-
-                    <h3 className="text-white text-lg font-bold mb-4 border-l-4 border-lime-500 pl-3">高雄醫療照護聯盟</h3>
-
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-slate-400">
-
-                        {allianceLinks.map((item, idx) => (
-
-                           <a
-
-                             key={idx}
-
-                             href={item.url}
-
-                             target="_blank"
-
-                             rel="noreferrer"
-
-                             className="hover:text-lime-400 transition-colors block truncate"
-
-                             title={item.name}
-
-                           >
-
-                             {item.name}
-
-                           </a>
-
-                        ))}
-
-                    </div>
-
-                </div>
+              </p>
 
             </div>
 
 
 
-            <div className="border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
+            {/* 2. 聯絡資訊 + 地圖 */}
 
-               <p>© {new Date().getFullYear()} {CLINIC_INFO.name} All rights reserved. Designed for Renal Care.</p>
+            <div className="space-y-4">
+
+              <h3 className="text-white text-lg font-bold mb-4 border-l-4 border-lime-500 pl-3">聯絡資訊</h3>
+
+              <ul className="space-y-3">
+
+                <li className="flex items-start gap-3">
+
+                  <MapPin className="w-5 h-5 text-lime-500 flex-shrink-0 mt-0.5" />
+
+                  <span className="text-sm">{CLINIC_INFO.address}</span>
+
+                </li>
+
+                <li className="flex items-center gap-3">
+
+                  <Phone className="w-5 h-5 text-lime-500 flex-shrink-0" />
+
+                  <a href={`tel:${CLINIC_INFO.phone}`} className="text-sm hover:text-white transition-colors">{CLINIC_INFO.phone}</a>
+
+                </li>
+
+              </ul>
+
+              {/* 小地圖 */}
+
+              <div className="mt-4 rounded-xl overflow-hidden border border-slate-700 h-32 relative group">
+
+                <iframe
+
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(CLINIC_INFO.address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+
+                  width="100%"
+
+                  height="100%"
+
+                  style={{ border: 0 }}
+
+                  loading="lazy"
+
+                  className="group-hover:opacity-75 transition-opacity"
+
+                ></iframe>
+
+                <a
+
+                  href={CLINIC_INFO.mapLink}
+
+                  target="_blank"
+
+                  rel="noreferrer"
+
+                  className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity text-white font-bold text-sm"
+
+                >
+
+                  顯示詳細地圖
+
+                </a>
+
+              </div>
 
             </div>
+
+
+
+            {/* 3. 快速連結 */}
+
+            <div>
+
+              <h3 className="text-white text-lg font-bold mb-4 border-l-4 border-lime-500 pl-3">快速連結</h3>
+
+              <div className="grid grid-cols-2 gap-2">
+
+                {navLinks.map(link => (
+
+                  <Link key={link.path} href={link.path} className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">
+
+                    {link.label}
+
+                  </Link>
+
+                ))}
+
+
+
+                {/* 🔗 外部權威網站連結 */}
+
+                <a href="https://health.businessweekly.com.tw/JHospital.aspx?id=HOSP000002974" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">良醫健康網</a>
+
+                <a href="https://kb.commonhealth.com.tw/hospitals/8966.html" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">康健知識庫</a>
+
+                <a href="https://www.clinics.com.tw/hospital/3502112113" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">台灣診所網</a>
+
+                <a href="https://www.tckdf.org.tw/Main/Index" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">腎臟病防治基金會</a>
+
+
+
+                {/* ✅ 修正後：使用 Link 指向你做好的 /clinics 頁面 */}
+
+                <Link
+
+                  href="/clinics"
+
+                  className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block"
+
+                >
+
+                  高雄市洗腎診所
+
+                </Link>                    </div>
+
+            </div>
+
+
+
+            {/* 4. 醫療聯盟 */}
+
+            <div>
+
+              <h3 className="text-white text-lg font-bold mb-4 border-l-4 border-lime-500 pl-3">高雄醫療照護聯盟</h3>
+
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-slate-400">
+
+                {allianceLinks.map((item, idx) => (
+
+                  <a
+
+                    key={idx}
+
+                    href={item.url}
+
+                    target="_blank"
+
+                    rel="noreferrer"
+
+                    className="hover:text-lime-400 transition-colors block truncate"
+
+                    title={item.name}
+
+                  >
+
+                    {item.name}
+
+                  </a>
+
+                ))}
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div className="border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
+
+            <p>© {new Date().getFullYear()} {CLINIC_INFO.name} All rights reserved. Designed for Renal Care.</p>
+
+          </div>
 
         </div>
 

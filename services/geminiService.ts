@@ -1,18 +1,9 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { CLINIC_INFO, SERVICES } from '@/lib/constants'; // 修正 import 路徑
-
-// 補上 SCHEDULE_CONTEXT 的定義 (如果 constants.ts 裡沒有的話，這裡補上避免報錯)
-// 如果您的 constants.ts 裡已經有 SCHEDULE_CONTEXT，請把下面這幾行註解掉
-const SCHEDULE_CONTEXT = `
-門診時間:
-週一至週六: 07:30 - 21:30 (全日門診/洗腎服務)
-週日: 休診
-`;
+import { CLINIC_INFO, SCHEDULE_CONTEXT, SERVICES } from '@/lib/constants';
 
 // Safe check for process.env
 const getApiKey = () => {
   try {
-    // 優先讀取 NEXT_PUBLIC_GEMINI_API_KEY (Next.js 前端環境變數通常加 NEXT_PUBLIC)
     return process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
   } catch (e) {
     console.warn("Environment variable access failed");
@@ -37,8 +28,8 @@ const sanitizeInput = (input: string): string => {
     /ignore all instructions/gi,
     /forget your instructions/gi,
     /system prompt/gi,
-    /you are now/gi, 
-    /act as/gi,      
+    /you are now/gi,
+    /act as/gi,
     /simulated mode/gi
   ];
 
@@ -51,7 +42,7 @@ const sanitizeInput = (input: string): string => {
 
 export const sendMessageToGemini = async (userMessage: string, history: string[] = []): Promise<string> => {
   const apiKey = getApiKey();
-  
+
   if (!apiKey) {
     console.error("❌ 尚未設定 Gemini API Key");
     return "系統暫時無法回應，請聯繫診所櫃檯。";
@@ -60,21 +51,21 @@ export const sendMessageToGemini = async (userMessage: string, history: string[]
   try {
     // 初始化 SDK
     const genAI = new GoogleGenerativeAI(apiKey);
-    // 使用 gemini-pro 模型 (目前穩定版)
+    // 使用 gemini模型 
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // 執行輸入淨化
     const safeUserMessage = sanitizeInput(userMessage);
 
     const clinicContext = `
-      你現在是「${CLINIC_INFO.name}」的 AI 腎臟專科健康助理。
+      你現在是「${CLINIC_INFO.name}」的 AI 腎臟健康助理。
       
       診所資訊:
       地址: ${CLINIC_INFO.address}
       電話: ${CLINIC_INFO.phone}
       預約連結: ${CLINIC_INFO.bookingLink}
       交通資訊: 捷運高雄國際機場站(R4) 1號出口，步行約 6 分鐘。
-      
+    
       ${SCHEDULE_CONTEXT}
       
       服務項目:
@@ -153,6 +144,6 @@ export const sendMessageToGemini = async (userMessage: string, history: string[]
 
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "抱歉，我現在有點累，請稍後再問我一次。";
+    return "抱歉，請稍後再問我一次。";
   }
 };
