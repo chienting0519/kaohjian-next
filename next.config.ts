@@ -2,8 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // 👇 Zeabur 部署必備
-  output: "standalone", 
-  
+  output: "standalone",
+
   // 👇 允許外部圖片 (Unsplash)
   images: {
     remotePatterns: [
@@ -19,10 +19,7 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
 
-  // 👇 (重要) 忽略 ESLint 錯誤
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+
 };
 
 export default nextConfig;

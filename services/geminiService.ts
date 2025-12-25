@@ -1,10 +1,9 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { CLINIC_INFO, SCHEDULE_CONTEXT, SERVICES } from '@/lib/constants'; // 修正 import 路徑
+import { CLINIC_INFO, SCHEDULE_CONTEXT, SERVICES } from '@/lib/constants';
 
 // Safe check for process.env
 const getApiKey = () => {
   try {
-    // 優先讀取 NEXT_PUBLIC_GEMINI_API_KEY (Next.js 前端環境變數通常加 NEXT_PUBLIC)
     return process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
   } catch (e) {
     console.warn("Environment variable access failed");
