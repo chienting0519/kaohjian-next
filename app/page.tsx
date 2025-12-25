@@ -114,7 +114,7 @@ const Home: React.FC = () => {
                 <strong>高健診所 (KaohJian Clinic)</strong> 是高雄小港區首選的腎臟專科診所。我們由前榮總、成大醫院主治醫師團隊駐診，專精於<strong>蛋白尿治療</strong>、<strong>慢性腎臟病 (CKD) 防治</strong>以及高品質的<strong>血液透析 (洗腎)</strong> 服務。
               </p>
               <p className="text-slate-600 text-lg leading-relaxed text-justify">
-                為了體恤腎友與家屬，我們特別提供<strong>「溫馨接送服務」</strong>，服務範圍涵蓋小港、鳳山、林園、大寮及前鎮區。診所內全面採用德國原裝透析機台與雙重 RO 純水系統，讓您在社區診所也能享有醫學中心等級的安全與品質。
+                為了體恤腎友與家屬，我們特別提供<strong>「溫馨接送服務」</strong>，服務範圍涵蓋小港、鳳山、林園、大寮及前鎮區。診所內全面採用德國與日本原裝透析機台與雙重 RO 純水系統，讓您在社區在地診所也能享有醫學中心等級的安全與品質。
               </p>
 
               <div className="pt-4 flex flex-wrap gap-4">
