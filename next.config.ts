@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // 👇 Zeabur 部署必備
-  output: "standalone",
+  // output: "standalone",
 
   // 👇 允許外部圖片 (Unsplash)
   images: {
