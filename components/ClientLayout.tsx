@@ -308,14 +308,12 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
                 <a href="https://www.tckdf.org.tw/Main/Index" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">腎臟病防治基金會</a>
 
                 {/* ✅ 修正：指向您的正式網域 */}
-                <a
-                  href="https://khjclinic.com"
-                  target="_blank"
-                  rel="noreferrer"
+                <Link
+                  href="/clinics"
                   className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block"
                 >
                   高雄市洗腎診所
-                </a>
+                </Link>
               </div>
             </div>
 
