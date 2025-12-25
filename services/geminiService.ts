@@ -53,13 +53,13 @@ export const sendMessageToGemini = async (userMessage: string, history: string[]
     // 初始化 SDK
     const genAI = new GoogleGenerativeAI(apiKey);
     // 使用 gemini模型 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     // 執行輸入淨化
     const safeUserMessage = sanitizeInput(userMessage);
 
     const clinicContext = `
-      你現在是「${CLINIC_INFO.name}」的 AI 腎臟專科健康助理。
+      你現在是「${CLINIC_INFO.name}」的 AI 腎臟健康助理。
       
       診所資訊:
       地址: ${CLINIC_INFO.address}
