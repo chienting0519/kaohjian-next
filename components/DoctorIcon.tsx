@@ -8,7 +8,7 @@ export const DoctorIcon = ({ className = "w-full h-full" }: { className?: string
   if (!imgError) {
     return (
       <img
-        src="/ai-logo.pngs"
+        src="/ai-logo.png"
         alt="高健診所 AI 助理"
         // 加上 rounded-full 以保持原本 SVG 的圓形頭像外觀
         className={`${className} object-cover rounded-full`}
