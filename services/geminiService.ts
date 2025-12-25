@@ -145,6 +145,8 @@ export const sendMessageToGemini = async (userMessage: string, history: string[]
 
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "抱歉，請稍後再問我一次。";
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    const keyStatus = apiKey ? `KeyLen:${apiKey.length}` : "NoKey";
+    return `抱歉，請稍後再問我一次。(Debug: ${errorMessage}, ${keyStatus})`;
   }
 };
