@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect, createContext } from 'react';
 import Link from 'next/link';
-import Image from 'next/image'; // ✅ 改用 Image 元件優化圖片
 import { usePathname } from 'next/navigation';
-import { Menu, X, Bell, Building2, MessageCircle, MapPin, Phone, Github } from 'lucide-react'; // ✅ 新增 Github icon
+import { Menu, X, Bell, Building2, MessageCircle, MapPin, Phone } from 'lucide-react';
 import { CLINIC_INFO } from '@/lib/constants';
 import HealthCheckModal from '@/components/HealthCheckModal';
 import VisitModal from '@/components/VisitModal';
@@ -78,7 +77,7 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
     "@context": "https://schema.org",
     "@type": "MedicalClinic",
     "name": CLINIC_INFO.name,
-    "image": "https://khjclinic.com/logo.webp", // 建議補上網域
+    "image": "/logo.webp",
     "description": "高雄腎臟專科 • 洗腎中心，提供最優質的血液透析治療與內科服務。",
     "address": {
       "@type": "PostalAddress",
@@ -99,7 +98,7 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
     "sameAs": [
       "https://health.businessweekly.com.tw/JHospital.aspx?id=HOSP000002974",
       "https://kb.commonhealth.com.tw/hospitals/8966.html",
-      "https://github.com/chienting0519/kaohjian-next", // ✅ 修改：這裡也改成 GitHub 連結
+      "https://khjclinic.com", // ✅ SEO 連結更新
       "https://www.clinics.com.tw/hospital/3502112113",
       "https://www.tckdf.org.tw/Main/Index"
     ]
@@ -120,18 +119,13 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center gap-4">
 
-              {/* Logo 區塊：靠左對齊 - ✅ 使用 Next.js Image 優化 */}
+              {/* Logo 區塊：靠左對齊 */}
               <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
-                <div className="relative w-10 h-10 sm:w-14 sm:h-14 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
-                  <Image
-                    src="/logo.webp"
-                    alt="高健診所 Logo"
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 640px) 40px, 56px"
-                    priority
-                  />
-                </div>
+                <img
+                  src="/logo.webp"
+                  alt="高健診所 Logo"
+                  className="w-10 h-10 sm:w-14 sm:h-14 object-contain group-hover:scale-105 transition-transform duration-300 flex-shrink-0"
+                />
                 <div className="flex flex-col min-w-0 items-start justify-center text-left">
                   <h1 className="text-lg sm:text-2xl font-bold text-cyan-900 tracking-tight leading-tight truncate">
                     {CLINIC_INFO.name}
@@ -274,9 +268,8 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
               </ul>
               {/* 小地圖 */}
               <div className="mt-4 rounded-xl overflow-hidden border border-slate-700 h-32 relative group">
-                {/* ✅ 修正：補上 $ 符號，確保地圖連結變數能正確代入 */}
                 <iframe
-                  src={`http://googleusercontent.com/maps.google.com/maps?q=${encodeURIComponent(CLINIC_INFO.address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(CLINIC_INFO.address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -304,27 +297,20 @@ const ClientLayout: React.FC<LayoutProps> = ({ children }) => {
                   </Link>
                 ))}
 
+                {/* 🔗 外部權威網站連結 */}
                 <a href="https://health.businessweekly.com.tw/JHospital.aspx?id=HOSP000002974" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">良醫健康網</a>
                 <a href="https://kb.commonhealth.com.tw/hospitals/8966.html" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">康健知識庫</a>
                 <a href="https://www.clinics.com.tw/hospital/3502112113" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">台灣診所網</a>
                 <a href="https://www.tckdf.org.tw/Main/Index" target="_blank" rel="noreferrer" className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block">腎臟病防治基金會</a>
 
-                <Link
-                  href="/clinics"
+                {/* ✅ 修正：指向您的正式網域 */}
+                <a
+                  href="https://khjclinic.com"
+                  target="_blank"
+                  rel="noreferrer"
                   className="text-sm text-slate-400 hover:text-lime-400 transition-colors py-1 block"
                 >
                   高雄市洗腎診所
-                </Link>
-
-                {/* ✅ 修改：將原本指向首頁的連結，改成指向 GitHub 專案 */}
-                <a
-                  href="https://github.com/chienting0519/kaohjian-next"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-slate-400 hover:text-white hover:bg-slate-800 transition-colors py-1 flex items-center gap-1"
-                >
-                  <Github className="w-3 h-3" />
-                  網站原始碼
                 </a>
               </div>
             </div>
