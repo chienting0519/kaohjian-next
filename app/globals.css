@@ -1,10 +1,12 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
+/* 👈 加入這一行 */
 :root {
   --background: #ffffff;
   --foreground: #171717;
   /* 定義你的品牌色 */
-  --primary: #0891b2; 
+  --primary: #0891b2;
   --primary-foreground: #ffffff;
 }
 
@@ -35,14 +37,20 @@ body {
     display: inline-block;
     animation: marquee 15s linear infinite;
   }
+
   .pause {
     animation-play-state: paused;
   }
 }
 
 @keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /* (原本的 .pattern-grid-lg 已經刪除了) */
