@@ -107,18 +107,6 @@ export const KIDNEY_SYMPTOMS: Symptom[] = [
   { id: 'diabetes', question: '本身是否有糖尿病病史?', riskWeight: 3 },
 ];
 
-// 定義文章介面 (這是你在本檔案內定義的，所以 export 沒問題)
-export interface Article {
-  id: string;
-  slug: string;
-  title: string;
-  summary: string;
-  date: string;
-  category: string;
-  tags: string[];
-  content: string;
-  imageUrl?: string;
-}
 
 // 8. 醫療團隊
 export const MEDICAL_TEAM: Doctor[] = [

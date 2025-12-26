@@ -4,8 +4,8 @@ import './globals.css'
 import ClientLayout from '@/components/ClientLayout'
 import Script from 'next/script' // 引入 Script 用於 JSON-LD
 
-const inter = Noto_Sans_TC({ 
-  subsets: ['latin'], 
+const inter = Noto_Sans_TC({
+  subsets: ['latin'],
   weight: ['400', '500', '700'],
   display: 'swap',
 })
@@ -40,7 +40,7 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'MedicalClinic',
     'name': '高健診所',
-    'image': 'https://khjclinic.com/og-image.jpg', // 建議之後在 public 放一張診所照片
+    'image': 'https://khjclinic.com/og-image.webp', // 建議之後在 public 放一張診所照片
     'description': '高雄小港專業血液透析中心，提供高品質洗腎服務與健康檢查。',
     'address': {
       '@type': 'PostalAddress',
@@ -78,7 +78,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <ClientLayout>
-           {children}
+          {children}
         </ClientLayout>
       </body>
     </html>
